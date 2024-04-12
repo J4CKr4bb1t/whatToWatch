@@ -5,13 +5,23 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-class StreamingFragment : Fragment() {
+import com.hfad.whattowatch.databinding.FragmentStreamingBinding
 
+class StreamingFragment : Fragment() {
+    private var _binding:FragmentStreamingBinding? = null
+    private val binding get() = _binding!!
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_streaming, container, false)
+        _binding = FragmentStreamingBinding.inflate(inflater,container,false)
+        val view = binding.root
+        return view
     }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
 }
