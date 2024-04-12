@@ -18,7 +18,7 @@ override fun onCreateView(
     savedInstanceState: Bundle?
 ): View? {
     val view = inflater.inflate(R.layout.fragment_home, container, false)
-    val searchButton = view.findViewById<Button>(R.id.button_search)
+    val searchButton = view.findViewById<Button>(R.id.buttonSearch)
     val favButton = view.findViewById<Button>(R.id.button_favorites)
     searchButton.setOnClickListener {
         view.findNavController()
