@@ -69,6 +69,6 @@ class SearchFragment : Fragment() {
     }
 
 
-    
+
 }
 

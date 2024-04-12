@@ -14,7 +14,7 @@ data class Result(
     val seasonCount: Int,
     val seasons: List<Season>,
     val status: Status,
-    val streamingInfo: StreamingInfoXX,
+    val streamingInfo: StreamingInfo,
     val title: String,
     val tmdbId: Int,
     val type: String,

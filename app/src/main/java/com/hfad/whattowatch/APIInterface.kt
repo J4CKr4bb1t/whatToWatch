@@ -10,7 +10,7 @@ import retrofit2.http.GET
 import retrofit2.http.Headers
 import retrofit2.http.Query
 interface APIInterface {
-    @GET("search")
+    @GET("search/title")
     @Headers("X-RapidAPI-Key:832c38ddcfmshee53ce9983b62bfp187fd9jsn18973a142442", "X-RapidAPI-Host:streaming-availability.p.rapidapi.com")
     fun getSearch(@Query("title") search:String, @Query("country") type: String): Call<SearchResult??>?
 

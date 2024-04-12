@@ -4,7 +4,7 @@ data class Season(
     val episodes: List<Episode>,
     val firstAirYear: Int,
     val lastAirYear: Int,
-    val streamingInfo: StreamingInfoX,
+    val streamingInfo: StreamingInfo,
     val title: String,
     val type: String
 )
