@@ -4,12 +4,6 @@
     android:orientation="vertical"
     android:padding="13dp">
 
-    <ImageView
-        android:id="@+id/movieImage"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:scaleType="centerCrop" />
-
     <TextView
         android:id="@+id/movieName"
         android:layout_width="match_parent"
