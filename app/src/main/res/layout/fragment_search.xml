@@ -30,7 +30,7 @@
         android:layout_marginStart="8dp" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view"
+        android:id="@+id/searchMoviesView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="16dp" />
