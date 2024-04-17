@@ -29,7 +29,7 @@
             android:id="@+id/action_detailFragment_to_streamingFragment"
             app:destination="@id/streamingFragment" />
         <argument
-            android:name="Position"
+            android:name="movie_num"
             app:argType="integer" />
     </fragment>
     <fragment

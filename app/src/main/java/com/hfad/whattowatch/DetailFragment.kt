@@ -1,17 +1,36 @@
 package com.hfad.whattowatch
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.findNavController
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.hfad.whattowatch.databinding.FragmentDetailBinding
+import com.hfad.whattowatch.API.Result
+
 
 class DetailFragment : Fragment() {
 
+    var movie_num = 0
     private var _binding: FragmentDetailBinding? = null
     private val binding get() = _binding!!
+
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        //   recipient = arguments!!.getString("recipient")
+        val bundle = arguments
+        if (bundle == null) {
+            Log.e("DetailFragment", "DetailFragment did not receive song_num")
+
+            return
+        }
+        movie_num = DetailFragmentArgs.fromBundle(bundle).movieNum
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,6 +48,23 @@ class DetailFragment : Fragment() {
         binding.returnToSearchButton.setOnClickListener {
             it.findNavController().navigate(R.id.action_detailFragment_to_searchFragment)
         }
+        //binding info from api
+        //var movie = (savedInstanceState?.getSerializable("Movie") as Result?)
+
+        val currMovie = results.get(movie_num)
+        val title = currMovie.title
+        binding.tvMediaTitle.text = title
+        val type = currMovie.type
+        val year = currMovie.year
+        val genre = currMovie.genres[0].name
+
+        val overview = currMovie.overview
+        binding.tvDescription.text = overview
+
+        val infoText = type +"~"+ year +"~"+ genre
+
+        binding.tvMediaInfo.text = infoText
+
     }
     override fun onDestroyView() {
         super.onDestroyView()
