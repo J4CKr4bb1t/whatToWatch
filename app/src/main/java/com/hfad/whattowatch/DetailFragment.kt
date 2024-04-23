@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.findNavController
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
@@ -30,6 +31,7 @@ class DetailFragment : Fragment() {
             return
         }
         movie_num = DetailFragmentArgs.fromBundle(bundle).movieNum
+
     }
 
     override fun onCreateView(
@@ -40,10 +42,21 @@ class DetailFragment : Fragment() {
         val view = binding.root
         return view
     }
+
+
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         binding.whereToWatchButton.setOnClickListener {
+            Log.e("stream_Num","recevied movie_Num")
+            //pass movie_num as stream_num
+            val action = DetailFragmentDirections
+                .actionDetailFragmentToStreamingFragment(movie_num)
             it.findNavController().navigate(R.id.action_detailFragment_to_streamingFragment)
+
+
+
         }
         binding.returnToSearchButton.setOnClickListener {
             it.findNavController().navigate(R.id.action_detailFragment_to_searchFragment)

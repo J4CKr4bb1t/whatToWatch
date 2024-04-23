@@ -49,7 +49,7 @@ class StreamingItemAdapter(val context: Context, var navController: NavControlle
             itemView.setOnClickListener {
                 Log.v("Navigating", "RecyclerView Clicked")
                 // detail to streaming fragment navigation
-                val action = DetailFragmentDirections.actionDetailFragmentToStreamingFragment()
+                val action = DetailFragmentDirections.actionDetailFragmentToStreamingFragment(pos)
                 navController.navigate(action)
             }
         }
