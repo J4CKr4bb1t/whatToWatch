@@ -38,7 +38,6 @@ class MovieItemAdapter(val context: Context, var navController: NavController) :
 
     //binds data to the view
     override fun onBindViewHolder(holder: MovieItemViewHolder, position: Int) {
-        //val item = songs[position]
         holder.bind(position)
     }
 
