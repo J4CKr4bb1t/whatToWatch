@@ -59,9 +59,9 @@ class StreamingItemAdapter(val context: Context, var navController: NavControlle
             val currMovie = streamerResults[position]
 
             // Streaming Information
-            val quality = currMovie.quality ?: "Unknown"
-            val service = currMovie.service ?: "Unknown"
-            val link = currMovie.link ?: "No link"
+            val quality = currMovie.quality
+            val service = currMovie.service
+            val link = currMovie.link
             val price = currMovie.price.toString()
 
             val infoText = "$quality ~ $service ~ $link ~ $price"
