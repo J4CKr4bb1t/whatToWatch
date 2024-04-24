@@ -50,6 +50,7 @@ class DetailFragment : Fragment() {
 
         binding.whereToWatchButton.setOnClickListener {
             Log.e("stream_Num","passing movie_Num " + movie_num)
+
             //pass movie_num as stream_num
             val action = DetailFragmentDirections
                 .actionDetailFragmentToStreamingFragment(movie_num)
@@ -65,6 +66,8 @@ class DetailFragment : Fragment() {
         //var movie = (savedInstanceState?.getSerializable("Movie") as Result?)
 
         val currMovie = results.get(movie_num)
+        Log.d("streaming","detail movie streaming" + currMovie.streamingInfo)
+
         val title = currMovie.title
         binding.tvMediaTitle.text = title
         val type = currMovie.type
