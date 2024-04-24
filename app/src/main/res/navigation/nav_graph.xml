@@ -49,6 +49,9 @@
         <action
             android:id="@+id/action_streamingFragment_to_searchFragment"
             app:destination="@id/searchFragment" />
+        <argument
+            android:name="stream_num"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/favoritesFragment"
