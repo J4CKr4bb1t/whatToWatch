@@ -10,6 +10,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.hfad.whattowatch.API.U
 import com.hfad.whattowatch.databinding.FragmentStreamingBinding
 
 class StreamingFragment : Fragment() {
@@ -68,6 +69,8 @@ class StreamingFragment : Fragment() {
         Log.e("stream_Num","recieved streaming U's  " + streamVals.toString())
 
         //we pass that List<U> to the recycleAdapter!
+        //recyclerAdapter.setSearchListItems(streamVals)
+
         recyclerAdapter.setSearchListItems(streamVals)
         //getting error "lateinit property recyclerAdapter has not been initialized"
 
@@ -80,7 +83,7 @@ class StreamingFragment : Fragment() {
             var currStream = streamerResults //.get(stream_num)
             recyclerAdapter.setSearchListItems(currStream)
 
-        Log.d("StreamingInfo",currStream.get(0).toString())
+        //Log.d("StreamingInfo",currStream.get(0).toString())
 
 //           val service = currMovie.service
 //            val quality = currMovie.quality
