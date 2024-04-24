@@ -49,13 +49,13 @@ class DetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.whereToWatchButton.setOnClickListener {
-            Log.e("stream_Num","recevied movie_Num")
+            Log.e("stream_Num","passing movie_Num " + movie_num)
             //pass movie_num as stream_num
             val action = DetailFragmentDirections
                 .actionDetailFragmentToStreamingFragment(movie_num)
-            it.findNavController().navigate(R.id.action_detailFragment_to_streamingFragment)
-
-
+            //it.findNavController().navigate(R.id.action_detailFragment_to_streamingFragment)
+            //val action = SearchFragmentDirections.actionSearchFragmentToDetailFragment(pos)
+            it.findNavController().navigate(action)
 
         }
         binding.returnToSearchButton.setOnClickListener {
