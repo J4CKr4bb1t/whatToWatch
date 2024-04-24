@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
+import com.hfad.whattowatch.API.Result
 import com.hfad.whattowatch.API.U
 
 var streamerResults: ArrayList<U> = ArrayList()
@@ -19,15 +20,16 @@ class StreamingItemAdapter(val context: Context, var navController: NavControlle
     override fun getItemCount(): Int = streamerResults.size
 
     fun setSearchListItems(searchData: List<U>) {
-        streamerResults.clear()
-        streamerResults.addAll(searchData)
+        streamerResults = searchData as ArrayList<U>
+       // streamerResults.clear()
+        //streamerResults.addAll(searchData)
         notifyDataSetChanged()
         Log.v("SearchListItems", "list updated: $streamerResults")
     }
 
     // creates view
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StreamingItemViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_movie, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_streaming, parent, false)
         return StreamingItemViewHolder(view, context, navController)
     }
 
@@ -40,8 +42,8 @@ class StreamingItemAdapter(val context: Context, var navController: NavControlle
     class StreamingItemViewHolder(itemView: View, private val context: Context, var navController: NavController)
         : RecyclerView.ViewHolder(itemView) {
 
-        private val title: TextView = itemView.findViewById(R.id.tvMediaTitle)
-        private val information: TextView = itemView.findViewById(R.id.tvMediaInfo)
+
+        private val information: TextView = itemView.findViewById(R.id.streamingInformation)
         private var pos: Int = 0
 
         // listener for streaming fragment, pass along streaming info
@@ -62,7 +64,7 @@ class StreamingItemAdapter(val context: Context, var navController: NavControlle
             val quality = currMovie.quality
             val service = currMovie.service
             val link = currMovie.link
-            val price = currMovie.price.toString()
+            val price = currMovie.price
 
             val infoText = "$quality ~ $service ~ $link ~ $price"
             information.text = infoText
