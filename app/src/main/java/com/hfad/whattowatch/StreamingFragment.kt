@@ -33,7 +33,7 @@ class StreamingFragment : Fragment() {
         //stream num tells us what movie index from results to access
         stream_num = StreamingFragmentArgs.fromBundle(bundle).streamNum
         Log.e("stream_Num","recieved streamNum " + stream_num)
-        //THIS IS WORKING
+
 
     }
 
@@ -69,10 +69,8 @@ class StreamingFragment : Fragment() {
         Log.e("stream_Num","recieved streaming U's  " + streamVals.toString())
 
         //we pass that List<U> to the recycleAdapter!
-        //recyclerAdapter.setSearchListItems(streamVals)
-
         recyclerAdapter.setSearchListItems(streamVals)
-        //getting error "lateinit property recyclerAdapter has not been initialized"
+
 
 
         binding.returnToSearchFromStreaming.setOnClickListener {
@@ -83,12 +81,6 @@ class StreamingFragment : Fragment() {
             var currStream = streamerResults //.get(stream_num)
             recyclerAdapter.setSearchListItems(currStream)
 
-        //Log.d("StreamingInfo",currStream.get(0).toString())
-
-//           val service = currMovie.service
-//            val quality = currMovie.quality
-//            val link = currMovie.link
-//            val price = currMovie.price
 
     }
     override fun onDestroyView() {

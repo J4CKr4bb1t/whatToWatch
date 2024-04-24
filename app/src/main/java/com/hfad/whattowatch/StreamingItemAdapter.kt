@@ -21,8 +21,6 @@ class StreamingItemAdapter(val context: Context, var navController: NavControlle
 
     fun setSearchListItems(searchData: List<U>) {
         streamerResults = searchData as ArrayList<U>
-       // streamerResults.clear()
-        //streamerResults.addAll(searchData)
         notifyDataSetChanged()
         Log.v("SearchListItems", "list updated: $streamerResults")
     }
