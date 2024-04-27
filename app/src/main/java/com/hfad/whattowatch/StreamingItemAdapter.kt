@@ -50,7 +50,7 @@ class StreamingItemAdapter(val context: Context, var navController: NavControlle
         init {
             itemView.setOnClickListener {
                 val currMovie = streamerResults[pos]
-                val link = currMovie.link // Assuming 'link' contains the website URL
+                val link = currMovie.link // contains the website URL
 
                 val intent = Intent(Intent.ACTION_VIEW, Uri.parse(link))
                 context.startActivity(intent)
