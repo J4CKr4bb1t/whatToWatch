@@ -12,40 +12,43 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="whatToWatch?"
         android:layout_gravity="center"
-        android:textSize="40sp"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/dela_gothic_one"
+        android:text="whatToWatch?"
         android:textColor="#000000"
-        android:layout_marginTop="30dp" />
+        android:textSize="40sp" />
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:src="@android:drawable/ic_media_play"
+        android:layout_width="202dp"
+        android:layout_height="153dp"
         android:layout_gravity="center"
         android:layout_marginTop="48dp"
-        app:tint="@color/white" />
+        android:src="@android:drawable/ic_media_play"
+        app:srcCompat="@drawable/play_icon" />
 
     <Button
         android:id="@+id/buttonSearch"
-        android:clickable="true"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:text="Search"
-        android:backgroundTint="#FFFFFF"
         android:layout_gravity="center"
         android:layout_marginTop="48dp"
-        android:textColor="#000000" />
+        android:backgroundTint="@color/black"
+        android:clickable="true"
+        android:fontFamily="@font/dela_gothic_one"
+        android:text="Search"
+        android:textColor="@color/white" />
 
     <Button
         android:id="@+id/button_favorites"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:text="See ♡"
         android:layout_gravity="center"
         android:layout_marginTop="16dp"
-        android:backgroundTint="#FFFFFF"
-        android:textColor="#000000" />
+        android:backgroundTint="@color/black"
+        android:fontFamily="@font/dela_gothic_one"
+        android:text="See ♡"
+        android:textColor="@color/white" />
 
 </LinearLayout>
