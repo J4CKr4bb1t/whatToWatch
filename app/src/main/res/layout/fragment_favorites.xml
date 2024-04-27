@@ -12,6 +12,8 @@
         android:layout_width="310dp"
         android:layout_height="wrap_content"
         android:text="My Favorites"
+        android:textColor="@color/black"
+        android:fontFamily="@font/dela_gothic_one"
         android:textAlignment="center"
         android:textSize="50dp" />
 
@@ -22,7 +24,9 @@
 
     <Button
         android:id="@+id/returnToHome"
-        android:layout_width="150dp"
+        android:layout_width="wrap_content"
         android:layout_height="45dp"
+        android:fontFamily="@font/dela_gothic_one"
+        android:backgroundTint="@color/black"
         android:text="return to home" />
 </LinearLayout>

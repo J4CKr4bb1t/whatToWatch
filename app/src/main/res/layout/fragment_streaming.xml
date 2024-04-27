@@ -9,11 +9,14 @@
     tools:context=".StreamingFragment">
 
     <TextView
-        android:layout_width="310dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Watch Options"
+        android:fontFamily="@font/dela_gothic_one"
+        android:text="Where to Watch"
         android:textAlignment="center"
-        android:textSize="50dp" />
+        android:paddingBottom="20dp"
+        android:textColor="@color/black"
+        android:textSize="40dp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/streamingRecycle"
@@ -22,7 +25,9 @@
 
     <Button
         android:id="@+id/returnToSearchFromStreaming"
-        android:layout_width="150dp"
+        android:layout_width="wrap_content"
         android:layout_height="45dp"
+        android:backgroundTint="@color/black"
+        android:fontFamily="@font/dela_gothic_one"
         android:text="return to search" />
 </LinearLayout>
