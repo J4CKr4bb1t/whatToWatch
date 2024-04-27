@@ -1,6 +1,8 @@
 package com.hfad.whattowatch
 
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -8,7 +10,6 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
-import com.hfad.whattowatch.API.Result
 import com.hfad.whattowatch.API.U
 
 var streamerResults: ArrayList<U> = ArrayList()
@@ -45,12 +46,14 @@ class StreamingItemAdapter(val context: Context, var navController: NavControlle
         private var pos: Int = 0
 
         // listener for streaming fragment, pass along streaming info
+        //  When user clicks on itemView, redirects user to the 
         init {
             itemView.setOnClickListener {
-                Log.v("Navigating", "RecyclerView Clicked")
-                // detail to streaming fragment navigation
-                val action = DetailFragmentDirections.actionDetailFragmentToStreamingFragment(pos)
-                navController.navigate(action)
+                val currMovie = streamerResults[pos]
+                val link = currMovie.link // Assuming 'link' contains the website URL
+
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(link))
+                context.startActivity(intent)
             }
         }
 

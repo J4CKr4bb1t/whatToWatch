@@ -20,9 +20,11 @@
         android:layout_width="200dp"
         android:layout_height="440dp" />
 
+
     <Button
         android:id="@+id/returnToSearchFromStreaming"
         android:layout_width="150dp"
         android:layout_height="45dp"
         android:text="return to search" />
+
 </LinearLayout>
