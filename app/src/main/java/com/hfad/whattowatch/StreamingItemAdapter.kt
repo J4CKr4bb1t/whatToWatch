@@ -46,7 +46,7 @@ class StreamingItemAdapter(val context: Context, var navController: NavControlle
         private var pos: Int = 0
 
         // listener for streaming fragment, pass along streaming info
-        //  When user clicks on itemView, redirects user to the 
+        //  When user clicks on itemView, redirects user to the
         init {
             itemView.setOnClickListener {
                 val currMovie = streamerResults[pos]
