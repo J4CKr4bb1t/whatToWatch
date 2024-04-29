@@ -62,10 +62,11 @@ class StreamingItemAdapter(val context: Context, var navController: NavControlle
             val quality = currMovie.quality
             val service = currMovie.service
             val link = currMovie.link
-            val price = currMovie.price
+            var price = currMovie.price
+         
             val type = currMovie.streamingType
 
-            val infoText = "$service ~ $type ~ $quality ~ $link ~ $price"
+            val infoText = "$service ~ $type ~ $quality ~ Click to open ~ $price"
             information.text = infoText
 
             // Set the icon based on the service name
