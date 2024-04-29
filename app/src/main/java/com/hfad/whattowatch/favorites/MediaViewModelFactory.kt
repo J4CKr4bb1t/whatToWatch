@@ -8,7 +8,7 @@ import com.hfad.whattowatch.favorites.MediaViewModel
 class TasksViewModelFactory (private val dao: MediaDao) : ViewModelProvider.Factory {
 
     //override -
-    fun <T: ViewModel?> create(modelClass: Class<T>): T {
+    override fun <T: ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(MediaViewModel::class.java)) {
             return MediaViewModel(dao) as T
         }
