@@ -70,14 +70,14 @@ class StreamingItemAdapter(val context: Context, var navController: NavControlle
 
             // Set the icon based on the service name
             val iconResource = when (service) {
-                "Amazon Prime" -> R.drawable.amazon_icon
-                "Apple TV" -> R.drawable.apple_icon
-                "Paramount Plus" -> R.drawable.paramount_icon
-                "Disney Plus" -> R.drawable.disney_icon
-                "Hulu" -> R.drawable.hulu_icon
-                "Max" -> R.drawable.max_icon
-                "Netflix" -> R.drawable.netflix_icon
-                "Peacock" -> R.drawable.peacock_icon
+                "prime" -> R.drawable.amazon_icon
+                "apple" -> R.drawable.apple_icon
+                "paramount" -> R.drawable.paramount_icon
+                "disney" -> R.drawable.disney_icon
+                "hulu" -> R.drawable.hulu_icon
+                "hbo" -> R.drawable.max_icon
+                "netflix" -> R.drawable.netflix_icon
+                "peacock" -> R.drawable.peacock_icon
                 else -> R.drawable.buy_icon // Use buy_icon for other cases or when only available to buy/rent
             }
             streamingIcon.setImageResource(iconResource)
