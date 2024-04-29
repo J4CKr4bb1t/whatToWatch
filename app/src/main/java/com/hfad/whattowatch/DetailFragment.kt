@@ -78,7 +78,7 @@ class DetailFragment : Fragment() {
         binding.tvMediaInfo.text = infoText
 
         // Set the image based on the type of media
-        val imageResource = when (type.toLowerCase()) {
+        val imageResource = when (type.lowercase()) {
             "movie" -> R.drawable.movie_icon
             "series" -> R.drawable.streaming_icon
             else -> R.drawable.media_icon
