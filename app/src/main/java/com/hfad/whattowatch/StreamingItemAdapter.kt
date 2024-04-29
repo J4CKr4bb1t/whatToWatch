@@ -66,8 +66,9 @@ class StreamingItemAdapter(val context: Context, var navController: NavControlle
             val service = currMovie.service
             val link = currMovie.link
             val price = currMovie.price
+            val type = currMovie.streamingType
 
-            val infoText = "$quality ~ $service ~ $link ~ $price"
+            val infoText = "$service ~ $type ~ $quality ~ $link ~ $price"
             information.text = infoText
         }
     }
