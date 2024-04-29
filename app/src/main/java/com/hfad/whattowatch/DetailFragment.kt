@@ -51,19 +51,15 @@ class DetailFragment : Fragment() {
         binding.whereToWatchButton.setOnClickListener {
             Log.e("stream_Num","passing movie_Num " + movie_num)
 
-            //pass movie_num as stream_num
+            // Pass movie_num as stream_num
             val action = DetailFragmentDirections
                 .actionDetailFragmentToStreamingFragment(movie_num)
-            //it.findNavController().navigate(R.id.action_detailFragment_to_streamingFragment)
-            //val action = SearchFragmentDirections.actionSearchFragmentToDetailFragment(pos)
             it.findNavController().navigate(action)
-
         }
+
         binding.returnToSearchButton.setOnClickListener {
             it.findNavController().navigate(R.id.action_detailFragment_to_searchFragment)
         }
-        //binding info from api
-        //var movie = (savedInstanceState?.getSerializable("Movie") as Result?)
 
         val currMovie = results.get(movie_num)
         Log.d("streaming","detail movie streaming" + currMovie.streamingInfo)
@@ -81,6 +77,13 @@ class DetailFragment : Fragment() {
 
         binding.tvMediaInfo.text = infoText
 
+        // Set the image based on the type of media
+        val imageResource = when (type.lowercase()) {
+            "movie" -> R.drawable.movie_icon
+            "series" -> R.drawable.streaming_icon
+            else -> R.drawable.media_icon
+        }
+        binding.mediaImage.setImageResource(imageResource)
     }
     override fun onDestroyView() {
         super.onDestroyView()

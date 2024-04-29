@@ -33,10 +33,7 @@ class StreamingFragment : Fragment() {
         //stream num tells us what movie index from results to access
         stream_num = StreamingFragmentArgs.fromBundle(bundle).streamNum
         Log.e("stream_Num","recieved streamNum " + stream_num)
-
-
     }
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,7 +42,6 @@ class StreamingFragment : Fragment() {
         _binding = FragmentStreamingBinding.inflate(inflater,container,false)
         val view = binding.root
         return view
-
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
