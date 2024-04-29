@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
@@ -38,15 +39,11 @@ class StreamingItemAdapter(val context: Context, var navController: NavControlle
     }
 
     // defines the view
-    class StreamingItemViewHolder(itemView: View, private val context: Context, var navController: NavController)
-        : RecyclerView.ViewHolder(itemView) {
-
-
+    class StreamingItemViewHolder(itemView: View, private val context: Context, var navController: NavController) : RecyclerView.ViewHolder(itemView) {
         private val information: TextView = itemView.findViewById(R.id.streamingInformation)
+        private val streamingIcon: ImageView = itemView.findViewById(R.id.streamingIcon)
         private var pos: Int = 0
 
-        // listener for streaming fragment, pass along streaming info
-        //  When user clicks on itemView, redirects user to the
         init {
             itemView.setOnClickListener {
                 val currMovie = streamerResults[pos]
@@ -69,6 +66,20 @@ class StreamingItemAdapter(val context: Context, var navController: NavControlle
 
             val infoText = "$quality ~ $service ~ $link ~ $price"
             information.text = infoText
+
+            // Set the icon based on the service name
+            val iconResource = when (service) {
+                "Amazon Prime" -> R.drawable.amazon_icon
+                "Apple TV" -> R.drawable.apple_icon
+                "Paramount Plus" -> R.drawable.paramount_icon
+                "Disney Plus" -> R.drawable.disney_icon
+                "Hulu" -> R.drawable.hulu_icon
+                "Max" -> R.drawable.max_icon
+                "Netflix" -> R.drawable.netflix_icon
+                "Peacock" -> R.drawable.peacock_icon
+                else -> R.drawable.buy_icon // Use buy_icon for other cases or when only available to buy/rent
+            }
+            streamingIcon.setImageResource(iconResource)
         }
     }
 }
