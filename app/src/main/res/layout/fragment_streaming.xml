@@ -20,8 +20,9 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/streamingRecycle"
-        android:layout_width="200dp"
-        android:layout_height="440dp" />
+        android:layout_width="374dp"
+        android:layout_height="440dp"
+        android:paddingBottom="20dp"/>
 
 
     <Button

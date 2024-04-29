@@ -77,6 +77,8 @@ class StreamingItemAdapter(val context: Context, var navController: NavControlle
                 "disney" -> R.drawable.disney_icon
                 "hulu" -> R.drawable.hulu_icon
                 "hbo" -> R.drawable.max_icon
+                "hbomaxus" -> R.drawable.max_icon
+                "max" -> R.drawable.max_icon
                 "netflix" -> R.drawable.netflix_icon
                 "peacock" -> R.drawable.peacock_icon
                 else -> R.drawable.buy_icon // Use buy_icon for other cases or when only available to buy/rent
