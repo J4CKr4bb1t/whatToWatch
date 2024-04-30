@@ -30,7 +30,8 @@
             android:id="@+id/tvMediaInfo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/tvMediaTitle"  android:fontFamily="@font/dela_gothic_one"
+            android:layout_below="@id/tvMediaTitle"
+            android:fontFamily="@font/dela_gothic_one"
             android:text="[type] [year] [genre]"
             android:textAlignment="center"
             android:textColor="@color/black" />

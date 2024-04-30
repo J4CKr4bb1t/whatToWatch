@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
 import com.hfad.whattowatch.API.U
@@ -21,10 +22,20 @@ class StreamingItemAdapter(val context: Context, var navController: NavControlle
     // itemCount used to make sure we display all the data
     override fun getItemCount(): Int = streamerResults.size
 
-    fun setSearchListItems(searchData: List<U>) {
-        streamerResults = searchData as ArrayList<U>
-        notifyDataSetChanged()
-        Log.v("SearchListItems", "list updated: $streamerResults")
+    fun setSearchListItems(searchData: List<U>?) {
+        if (searchData != null) {
+            streamerResults = searchData as ArrayList<U>
+            notifyDataSetChanged()
+            Log.v("SearchListItems", "list updated: $streamerResults")
+        } else {
+            // Handle null searchData for no streaming information
+            streamerResults.clear()
+            notifyDataSetChanged()
+            Log.v("SearchListItems", "searchData is null")
+
+            // Show toast that there is no streaming information
+            Toast.makeText(context, "No streaming information available", Toast.LENGTH_LONG).show();
+        }
     }
 
     // creates view
