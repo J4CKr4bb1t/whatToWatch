@@ -86,7 +86,6 @@ class DetailFragment : Fragment() {
         Log.d("streaming","detail movie streaming" + currMovie.streamingInfo)
 
         val TMDB = currMovie.tmdbId;
-        viewModel.newMediaTMDB = TMDB
 
         val title = currMovie.title
         binding.tvMediaTitle.text = title
@@ -100,6 +99,15 @@ class DetailFragment : Fragment() {
         val infoText = type +"~"+ year +"~"+ genre
 
         binding.tvMediaInfo.text = infoText
+
+        //pass info to viewModel in case we call addMedia()
+        viewModel.newMediaTMDB = TMDB
+        viewModel.newMediaTitle = title
+        viewModel.newMediaType = type
+        viewModel.newMediaYear = year
+        viewModel.newMediaGenre = genre
+        viewModel.newMediaDesc = overview
+        //end pass to database
 
         // Set the image based on the type of media
         val imageResource = when (type.lowercase()) {
