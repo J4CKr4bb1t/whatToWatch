@@ -57,6 +57,10 @@ class DetailFragment : Fragment() {
             it.findNavController().navigate(action)
         }
 
+        binding.returnToSearchButton.setOnClickListener {
+            it.findNavController().navigate(R.id.action_detailFragment_to_searchFragment)
+        }
+
         val currMovie = results.get(movie_num)
         Log.d("streaming","detail movie streaming" + currMovie.streamingInfo)
 
@@ -64,13 +68,18 @@ class DetailFragment : Fragment() {
         binding.tvMediaTitle.text = title
         val type = currMovie.type
         val year = currMovie.year
+        val showYear = currMovie.firstAirYear
         val genre = currMovie.genres[0].name
 
         val overview = currMovie.overview
         binding.tvDescription.text = overview
 
-        val infoText = type +", "+ year +", "+ genre
-
+        val infoText: String
+        if (type == "series") {
+            infoText = type + "~" + showYear + "~" + genre
+        } else {
+            infoText = type + "~" + year + "~" + genre
+        }
         binding.tvMediaInfo.text = infoText
 
         // Set the image based on the type of media
