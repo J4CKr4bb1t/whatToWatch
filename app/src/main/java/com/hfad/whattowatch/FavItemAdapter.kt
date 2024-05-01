@@ -69,15 +69,10 @@ class FavItemAdapter(val context: Context, var navController: NavController) :
                 //Movie Information
                 val type = currMovie.mediaType
                 val year = currMovie.mediaYear
-                val showYear = currMovie.mediaYear
                 val genre = currMovie.mediaGenre
 
-                val infoText: String
-                if (type == "series") {
-                    infoText = type + ", " + showYear + ", " + genre
-                } else {
-                    infoText = type + ", " + year + ", " + genre
-                }
+                val infoText = type + ", " + year + ", " + genre
+
                 information.text = infoText
             }
         }
