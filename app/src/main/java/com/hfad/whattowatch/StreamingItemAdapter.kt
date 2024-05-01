@@ -74,11 +74,26 @@ class StreamingItemAdapter(val context: Context, var navController: NavControlle
             val service = currMovie.service
             val link = currMovie.link
             var price = currMovie.price
-         
+
             val type = currMovie.streamingType
 
-            val infoText = "$service ~ $type ~ $quality ~ Click to open ~ $price"
+            val infoText: String
+            if (price != null) {
+                // Extract the numeric part of the price
+                val priceString = price.formatted // Access the formatted price string
+                val indexOfSpace = priceString.indexOf(' ') // Find the first space index
+                if (indexOfSpace > 0) {
+                    val priceWithoutCurrency = priceString.substring(0, indexOfSpace) // Extract price part
+                    infoText = String.format("%s ~ %s ~ %s ~ Click to open ~ %s USD", service, type, quality, priceWithoutCurrency)
+                } else {
+                    // Handle case where price format is unexpected (use original price)
+                    infoText = String.format("%s ~ %s ~ %s ~ Click to open ~ %s", service, type, quality, priceString)
+                }
+            } else {
+                infoText = String.format("%s ~ %s ~ %s ~ Click to open ~ 0.00 USD", service, type, quality)
+            }
             information.text = infoText
+
 
             // Set the icon based on the service name
             val iconResource = when (service) {

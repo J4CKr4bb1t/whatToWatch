@@ -55,6 +55,7 @@ class FavoritesFragment : Fragment() {
         binding.returnToHome.setOnClickListener {
             it.findNavController().navigate(R.id.action_favoritesFragment_to_homeFragment)
         }
+
     }
     override fun onDestroyView() {
         super.onDestroyView()
