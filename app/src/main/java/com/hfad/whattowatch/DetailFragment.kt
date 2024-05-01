@@ -7,11 +7,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.hfad.tasks.TasksViewModelFactory
 import com.hfad.whattowatch.databinding.FragmentDetailBinding
 import com.hfad.whattowatch.API.Result
+import com.hfad.whattowatch.favorites.MediaDatabase
+import com.hfad.whattowatch.favorites.MediaViewModel
 
 
 class DetailFragment : Fragment() {
@@ -38,6 +42,16 @@ class DetailFragment : Fragment() {
     ): View? {
         _binding = FragmentDetailBinding.inflate(inflater,container,false )
         val view = binding.root
+
+        //for media database
+        val application = requireNotNull(this.activity).application
+        val dao = MediaDatabase.getInstance(application).mediaDao
+        val viewModelFactory = TasksViewModelFactory(dao)
+        val viewModel = ViewModelProvider(
+            this, viewModelFactory).get(MediaViewModel::class.java)
+
+        binding.viewModel = viewModel
+
         return view
     }
 

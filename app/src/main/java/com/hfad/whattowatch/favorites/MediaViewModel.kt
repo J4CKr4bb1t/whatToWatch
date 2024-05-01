@@ -6,14 +6,38 @@ import com.hfad.whattowatch.MediaDao
 import kotlinx.coroutines.launch
 
 class MediaViewModel (val dao: MediaDao) : ViewModel() {
-    var newMediaTitle = "defaultTitle"
+    /*DATABASE VALUES
+   * TMDB : Long
+   * TITLE: String
+   * TYPE: String
+   * YEAR: int
+   * GENRE: String
+   * DESC: String
+   * STREAMINGINFO: streamingInfo?
+   * FAVORITED: Boolean
+   * */
+    var newMediaTMDB = 555555555
+    var newMediaTitle = "default Title"
+    var newMediaType = "default type"
+    var newMediaYear = 1999
+    var newMediaGenre = "default genre"
+    var newMediaDesc = "default desc"
+    var newMediaStreaming = null
+    var newMediaFavorited = true
 
 
-    //as of now, add Task JUST adds the title. Once that's working, we can add more info
-    fun addTask() {
+    fun addMedia() {
         viewModelScope.launch {
             val media = Media()
+            media.mediaTMDB = newMediaTMDB.toLong()
             media.mediaTitle = newMediaTitle
+            media.mediaType = newMediaType
+            media.mediaYear = newMediaYear
+            media.mediaGenre = newMediaGenre
+            media.mediaDesc = newMediaDesc
+            media.mediaStreaming = newMediaStreaming
+            media.mediaFavorited = newMediaFavorited
+
             dao.insert(media)
         }
     }
