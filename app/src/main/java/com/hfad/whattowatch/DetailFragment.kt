@@ -95,8 +95,11 @@ class DetailFragment : Fragment() {
         val infoText: String
         if (type == "series") {
             infoText = type + ", " + showYear + ", " + genre
+            viewModel.newMediaYear = showYear
+
         } else {
             infoText = type + ", " + year + ", " + genre
+            viewModel.newMediaYear = year
         }
         binding.tvMediaInfo.text = infoText
 
@@ -104,7 +107,6 @@ class DetailFragment : Fragment() {
         viewModel.newMediaTMDB = TMDB
         viewModel.newMediaTitle = title
         viewModel.newMediaType = type
-        viewModel.newMediaYear = year
         viewModel.newMediaGenre = genre
         viewModel.newMediaDesc = overview
         //end pass to database
