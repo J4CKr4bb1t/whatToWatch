@@ -57,10 +57,6 @@ class DetailFragment : Fragment() {
             it.findNavController().navigate(action)
         }
 
-        binding.returnToSearchButton.setOnClickListener {
-            it.findNavController().navigate(R.id.action_detailFragment_to_searchFragment)
-        }
-
         val currMovie = results.get(movie_num)
         Log.d("streaming","detail movie streaming" + currMovie.streamingInfo)
 
