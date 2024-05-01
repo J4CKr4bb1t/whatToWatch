@@ -19,7 +19,6 @@ data class Media(
     * FAVORITED: Boolean
     * */
 
-
     //tmdb number
     @PrimaryKey(autoGenerate = false)
     var mediaTMDB: Long = 0L,
@@ -45,8 +44,8 @@ data class Media(
     var mediaDesc: String = "",
 
     //streamingInfo for movie
-    @ColumnInfo(name = "media_stream")
-    var mediaStreaming: StreamingInfo? = null,
+//    @ColumnInfo(name = "media_stream")
+//    var mediaStreaming: StreamingInfo? = null,
 
     //is it favorited?
     @ColumnInfo(name = "media_fav")

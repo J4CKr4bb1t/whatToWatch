@@ -33,13 +33,13 @@ class DetailFragment : Fragment() {
             return
         }
         movie_num = DetailFragmentArgs.fromBundle(bundle).movieNum
-
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        //this stopped working... WHYYYYYY
         _binding = FragmentDetailBinding.inflate(inflater,container,false )
         val view = binding.root
 

@@ -1,5 +1,6 @@
 package com.hfad.whattowatch.favorites
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.hfad.whattowatch.MediaDao
@@ -35,8 +36,10 @@ class MediaViewModel (val dao: MediaDao) : ViewModel() {
             media.mediaYear = newMediaYear
             media.mediaGenre = newMediaGenre
             media.mediaDesc = newMediaDesc
-            media.mediaStreaming = newMediaStreaming
+            //media.mediaStreaming = newMediaStreaming
             media.mediaFavorited = newMediaFavorited
+
+            Log.d("INSERTING" , "making dao.insert() call!!")
 
             dao.insert(media)
         }
