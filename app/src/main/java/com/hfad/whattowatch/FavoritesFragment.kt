@@ -52,7 +52,10 @@ class FavoritesFragment : Fragment() {
 
         //set recycleAdapter with all the movies tagged favorite
         Log.d("Database", dao.getAll().toString())
-        Log.d("Database", dao.getAll().value?.get(0).toString())
+
+        //only prints data if its !null
+        dao.getAll().value?.toString()?.let { Log.d("Database Info", it) }
+
         //passes List<Media> to recycleView
         recyclerAdapter.setSearchListItems(dao.getAll().value)
 
