@@ -48,16 +48,13 @@ class FavoritesFragment : Fragment() {
             this, viewModelFactory).get(MediaViewModel::class.java)
 
         binding.viewModel = viewModel
-        //end database establishing
 
-        //set recycleAdapter with all the movies tagged favorite
-        Log.d("Database", dao.getAll().toString())
 
-        //only prints data if its !null
-        Log.d("DataBase Info", dao.getAll().toString())
+        //GOTTA USE THE OBSERVER TO ACCESS DATABASE SO THAT IT HAS TIME TO LOAD
+        dao.getAll().observe(viewLifecycleOwner) { mediaList ->
+            recyclerAdapter.setSearchListItems(mediaList)
+        }
 
-        //passes List<Media> to recycleView
-        recyclerAdapter.setSearchListItems(dao.getAll().value)
 
 
         //return to home
