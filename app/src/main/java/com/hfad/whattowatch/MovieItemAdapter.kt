@@ -76,9 +76,9 @@ class MovieItemAdapter(val context: Context, var navController: NavController) :
 
             val infoText: String
             if (type == "series") {
-                infoText = type + "~" + showYear + "~" + genre
+                infoText = type + ", " + showYear + ", " + genre
             } else {
-                infoText = type + "~" + year + "~" + genre
+                infoText = type + ", " + year + ", " + genre
             }
             information.text =  infoText
         }

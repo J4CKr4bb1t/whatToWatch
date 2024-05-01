@@ -76,9 +76,9 @@ class DetailFragment : Fragment() {
 
         val infoText: String
         if (type == "series") {
-            infoText = type + "~" + showYear + "~" + genre
+            infoText = type + ", " + showYear + ", " + genre
         } else {
-            infoText = type + "~" + year + "~" + genre
+            infoText = type + ", " + year + ", " + genre
         }
         binding.tvMediaInfo.text = infoText
 
