@@ -54,7 +54,7 @@ class FavoritesFragment : Fragment() {
         Log.d("Database", dao.getAll().toString())
 
         //only prints data if its !null
-        dao.getAll().value?.toString()?.let { Log.d("Database Info", it) }
+        Log.d("DataBase Info", dao.getAll().toString())
 
         //passes List<Media> to recycleView
         recyclerAdapter.setSearchListItems(dao.getAll().value)

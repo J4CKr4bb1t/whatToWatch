@@ -28,7 +28,7 @@ interface MediaDao {
     @Query("SELECT * FROM media_table WHERE mediaTMDB = :mediaTMBD")
     fun get(mediaTMBD: Long): LiveData<Media>
 
-    @Query("SELECT * FROM media_table ORDER BY mediaTMDB DESC")
+    @Query("SELECT * FROM media_table")
     fun getAll(): LiveData<List<Media>>
 
 }
