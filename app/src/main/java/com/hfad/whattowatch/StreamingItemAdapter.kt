@@ -1,11 +1,15 @@
 package com.hfad.whattowatch
 
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
 import com.hfad.whattowatch.API.U
@@ -18,16 +22,25 @@ class StreamingItemAdapter(val context: Context, var navController: NavControlle
     // itemCount used to make sure we display all the data
     override fun getItemCount(): Int = streamerResults.size
 
-    fun setSearchListItems(searchData: List<U>) {
-        streamerResults.clear()
-        streamerResults.addAll(searchData)
-        notifyDataSetChanged()
-        Log.v("SearchListItems", "list updated: $streamerResults")
+    fun setSearchListItems(searchData: List<U>?) {
+        if (searchData != null) {
+            streamerResults = searchData as ArrayList<U>
+            notifyDataSetChanged()
+            Log.v("SearchListItems", "list updated: $streamerResults")
+        } else {
+            // Handle null searchData for no streaming information
+            streamerResults.clear()
+            notifyDataSetChanged()
+            Log.v("SearchListItems", "searchData is null")
+
+            // Show toast that there is no streaming information
+            Toast.makeText(context, "No streaming information available", Toast.LENGTH_LONG).show();
+        }
     }
 
     // creates view
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StreamingItemViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_movie, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_streaming, parent, false)
         return StreamingItemViewHolder(view, context, navController)
     }
 
@@ -37,20 +50,18 @@ class StreamingItemAdapter(val context: Context, var navController: NavControlle
     }
 
     // defines the view
-    class StreamingItemViewHolder(itemView: View, private val context: Context, var navController: NavController)
-        : RecyclerView.ViewHolder(itemView) {
-
-        private val title: TextView = itemView.findViewById(R.id.tvMediaTitle)
-        private val information: TextView = itemView.findViewById(R.id.tvMediaInfo)
+    class StreamingItemViewHolder(itemView: View, private val context: Context, var navController: NavController) : RecyclerView.ViewHolder(itemView) {
+        private val information: TextView = itemView.findViewById(R.id.streamingInformation)
+        private val streamingIcon: ImageView = itemView.findViewById(R.id.streamingIcon)
         private var pos: Int = 0
 
-        // listener for streaming fragment, pass along streaming info
         init {
             itemView.setOnClickListener {
-                Log.v("Navigating", "RecyclerView Clicked")
-                // detail to streaming fragment navigation
-                val action = DetailFragmentDirections.actionDetailFragmentToStreamingFragment()
-                navController.navigate(action)
+                val currMovie = streamerResults[pos]
+                val link = currMovie.link // contains the website URL
+
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(link))
+                context.startActivity(intent)
             }
         }
 
@@ -62,10 +73,28 @@ class StreamingItemAdapter(val context: Context, var navController: NavControlle
             val quality = currMovie.quality
             val service = currMovie.service
             val link = currMovie.link
-            val price = currMovie.price.toString()
+            var price = currMovie.price
+         
+            val type = currMovie.streamingType
 
-            val infoText = "$quality ~ $service ~ $link ~ $price"
+            val infoText = "$service ~ $type ~ $quality ~ Click to open ~ $price"
             information.text = infoText
+
+            // Set the icon based on the service name
+            val iconResource = when (service) {
+                "prime" -> R.drawable.amazon_icon
+                "apple" -> R.drawable.apple_icon
+                "paramount" -> R.drawable.paramount_icon
+                "disney" -> R.drawable.disney_icon
+                "hulu" -> R.drawable.hulu_icon
+                "hbo" -> R.drawable.max_icon
+                "hbomaxus" -> R.drawable.max_icon
+                "max" -> R.drawable.max_icon
+                "netflix" -> R.drawable.netflix_icon
+                "peacock" -> R.drawable.peacock_icon
+                else -> R.drawable.buy_icon // Use buy_icon for other cases or when only available to buy/rent
+            }
+            streamingIcon.setImageResource(iconResource)
         }
     }
 }

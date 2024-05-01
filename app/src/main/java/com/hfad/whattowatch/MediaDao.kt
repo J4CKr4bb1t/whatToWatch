@@ -25,7 +25,7 @@ interface MediaDao {
     suspend fun delete(media: Media)
 
     //these use live data, so they do not need to be suspended. they ALREADY run in the background
-    @Query("SELECT * FROM media_table WHERE mediaTMDB = :mediaTMDB")
+    @Query("SELECT * FROM media_table WHERE mediaTMDB = :mediaTMBD")
     fun get(mediaTMBD: Long): LiveData<Media>
 
     @Query("SELECT * FROM media_table ORDER BY mediaTMDB DESC")

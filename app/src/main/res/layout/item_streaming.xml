@@ -1,15 +1,27 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="13dp">
 
+    <ImageView
+        android:id="@+id/streamingIcon"
+        android:layout_width="47dp"
+        android:layout_height="47dp"
+        app:srcCompat="@android:drawable/ic_menu_gallery" />
+
     <TextView
-        android:id="@+id/movieInformation"
-        android:layout_width="match_parent"
+        android:id="@+id/streamingInformation"
+        android:layout_width="331dp"
         android:layout_height="wrap_content"
-        android:text="[service name] [type] [quality] [link]"
+        android:layout_marginStart="3dp"
+        android:layout_toEndOf="@id/streamingIcon"
+        android:fontFamily="@font/dela_gothic_one"
+        android:gravity="center"
+        android:text="[service name] [type] [quality] [link] [price]"
+        android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="16sp" />
 
-</LinearLayout>
+</RelativeLayout>

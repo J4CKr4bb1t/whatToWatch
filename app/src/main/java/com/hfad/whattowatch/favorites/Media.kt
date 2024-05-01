@@ -9,19 +9,19 @@ data class Media (
 
     //tmdb number
     @PrimaryKey(autoGenerate = false)
-    var mediaTMDB: Long = 0L,
+    var mediaTMDB: Long = 0L;
 
     @ColumnInfo(name = "media_type")
-    var mediaType: String = "",
+    var mediaType: String = "";
 
     @ColumnInfo(name = "media_title")
-    var mediaTitle: String = "",
+    var mediaTitle: String = "";
 
     @ColumnInfo(name = "media_desc")
-    var mediaDesc: String = "",
+    var mediaDesc: String = "";
 
     @ColumnInfo(name = "media_year")
-    var mediaDesc: Int = 0,
+    var mediaYear: Int = 0;
 
     @ColumnInfo(name = "media_fav")
     var mediaFavorited: Boolean = false

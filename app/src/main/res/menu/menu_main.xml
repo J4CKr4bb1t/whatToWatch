@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="#C3F2CB">
+    <group android:checkableBehavior="single">
+         <item
+            android:id="@+id/homeFragment"
+            android:title="Home" />
+        <item
+            android:id="@+id/favoritesFragment"
+            android:title="Favorites" />
+        <item
+            android:id="@+id/searchFragment"
+            android:icon="@android:drawable/ic_menu_search"
+            android:title="Search" />
+    </group>
+</menu>
