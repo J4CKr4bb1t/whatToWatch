@@ -22,7 +22,7 @@
             android:background="#C3F2CB"
             app:titleTextColor="@android:color/black"
             android:elevation="4dp"
-            style="@style/Widget.MaterialComponents.Toolbar.Primary"/>
+           />
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/nav_host_fragment"
