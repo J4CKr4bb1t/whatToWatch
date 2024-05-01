@@ -39,11 +39,10 @@ class DetailFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        //this stopped working... WHYYYYYY
         _binding = FragmentDetailBinding.inflate(inflater,container,false )
         val view = binding.root
 
-        //for media database
+        //for media database, establish viewModel
         val application = requireNotNull(this.activity).application
         val dao = MediaDatabase.getInstance(application).mediaDao
         val viewModelFactory = TasksViewModelFactory(dao)
@@ -51,6 +50,7 @@ class DetailFragment : Fragment() {
             this, viewModelFactory).get(MediaViewModel::class.java)
 
         binding.viewModel = viewModel
+        //done establishing viewModel
 
         return view
     }
@@ -59,6 +59,7 @@ class DetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
 
         //forDatabase information
         val application = requireNotNull(this.activity).application
@@ -85,7 +86,7 @@ class DetailFragment : Fragment() {
         val currMovie = results.get(movie_num)
         Log.d("streaming","detail movie streaming" + currMovie.streamingInfo)
 
-        val TMDB = currMovie.tmdbId;
+        val TMDB = currMovie.tmdbId
 
         val title = currMovie.title
         binding.tvMediaTitle.text = title

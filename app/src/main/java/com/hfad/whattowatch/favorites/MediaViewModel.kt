@@ -44,4 +44,9 @@ class MediaViewModel (val dao: MediaDao) : ViewModel() {
             dao.insert(media)
         }
     }
+
+    fun retreiveMedia() {
+        dao.getAll()
+
+    }
 }
