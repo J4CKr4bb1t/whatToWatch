@@ -31,7 +31,6 @@ class MovieItemAdapter(val context: Context, var navController: NavController) :
 
     //creates view
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieItemViewHolder {
-
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_movie,parent,false)
         return MovieItemViewHolder(view, context, navController)
     }
