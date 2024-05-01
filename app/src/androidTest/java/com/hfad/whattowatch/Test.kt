@@ -1,5 +1,6 @@
 package com.hfad.whattowatch
 
+import androidx.test.core.app.ActivityScenario
 import org.junit.Assert.*
 
 import androidx.test.espresso.Espresso.*
@@ -7,22 +8,20 @@ import org.junit.Test
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.espresso.action.ViewActions.*
 import androidx.test.espresso.assertion.ViewAssertions.*
-import org.junit.Assert.*
 import org.junit.Before
-import org.junit.runner.RunWith
-import androidx.test.ext.junit.runners.AndroidJUnit4
-import androidx.test.ext.junit.rules.ActivityScenarioRule
+
 
 
 class Test {
     @Before
     fun setUp() {
-        ActivityScenarioRule(MainActivity::class.java).launchActivity()
+        val activityScenario = ActivityScenario.launch(MainActivity::class.java)
     }
+
     @Test
     fun testNavigationToSearchFragment() {
-        // Open drawer (implementation depends on your drawer library)
-        onView(withId(R.id.drawer_layout)).perform(openDrawer())
+        // Open drawer (assuming your drawer_layout has a NavigationView)
+        onView(withId(R.id.drawer_layout)).perform(open())
 
         // Click on Search item
         onView(withId(R.id.search_field)).perform(click())
@@ -61,7 +60,7 @@ class Test {
 
         // Assert details like Title, type, year are displayed (use data matchers)
         onView(withId(R.id.tvMediaTitle)).check(matches(withText("Friends")))
-        // ... similar assertions for other details
+
     }
     @Test
     fun testFavoriteButtonClick() {
