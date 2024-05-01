@@ -7,11 +7,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.hfad.tasks.TasksViewModelFactory
 import com.hfad.whattowatch.databinding.FragmentDetailBinding
 import com.hfad.whattowatch.API.Result
+import com.hfad.whattowatch.favorites.MediaDatabase
+import com.hfad.whattowatch.favorites.MediaViewModel
 
 
 class DetailFragment : Fragment() {
@@ -19,8 +23,6 @@ class DetailFragment : Fragment() {
     var movie_num = 0
     private var _binding: FragmentDetailBinding? = null
     private val binding get() = _binding!!
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //   recipient = arguments!!.getString("recipient")
@@ -31,7 +33,6 @@ class DetailFragment : Fragment() {
             return
         }
         movie_num = DetailFragmentArgs.fromBundle(bundle).movieNum
-
     }
 
     override fun onCreateView(
@@ -40,6 +41,17 @@ class DetailFragment : Fragment() {
     ): View? {
         _binding = FragmentDetailBinding.inflate(inflater,container,false )
         val view = binding.root
+
+        //for media database, establish viewModel
+        val application = requireNotNull(this.activity).application
+        val dao = MediaDatabase.getInstance(application).mediaDao
+        val viewModelFactory = TasksViewModelFactory(dao)
+        val viewModel = ViewModelProvider(
+            this, viewModelFactory).get(MediaViewModel::class.java)
+
+        binding.viewModel = viewModel
+        //done establishing viewModel
+
         return view
     }
 
@@ -47,6 +59,16 @@ class DetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
+        //forDatabase information
+        val application = requireNotNull(this.activity).application
+        val dao = MediaDatabase.getInstance(application).mediaDao
+        val viewModelFactory = TasksViewModelFactory(dao)
+        val viewModel = ViewModelProvider(
+            this, viewModelFactory).get(MediaViewModel::class.java)
+
+        binding.viewModel = viewModel
 
         binding.whereToWatchButton.setOnClickListener {
             Log.e("stream_Num","passing movie_Num " + movie_num)
@@ -59,6 +81,8 @@ class DetailFragment : Fragment() {
 
         val currMovie = results.get(movie_num)
         Log.d("streaming","detail movie streaming" + currMovie.streamingInfo)
+
+        val TMDB = currMovie.tmdbId
 
         val title = currMovie.title
         binding.tvMediaTitle.text = title
@@ -77,6 +101,15 @@ class DetailFragment : Fragment() {
             infoText = type + ", " + year + ", " + genre
         }
         binding.tvMediaInfo.text = infoText
+
+        //pass info to viewModel in case we call addMedia()
+        viewModel.newMediaTMDB = TMDB
+        viewModel.newMediaTitle = title
+        viewModel.newMediaType = type
+        viewModel.newMediaYear = year
+        viewModel.newMediaGenre = genre
+        viewModel.newMediaDesc = overview
+        //end pass to database
 
         // Set the image based on the type of media
         val imageResource = when (type.lowercase()) {
