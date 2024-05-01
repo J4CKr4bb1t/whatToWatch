@@ -73,7 +73,7 @@ class MovieItemAdapter(val context: Context, var navController: NavController) :
             val genre = currMovie.genres[0].name
             //val genre = genres.name
 
-            val infoText = type +"~"+ year +"~"+ genre
+            val infoText = type +", "+ year +", "+ genre
 
             information.text =  infoText
         }

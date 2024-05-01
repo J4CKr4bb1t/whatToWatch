@@ -21,9 +21,6 @@ class FavoritesFragment : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.returnToHome.setOnClickListener {
-            it.findNavController().navigate(R.id.action_favoritesFragment_to_homeFragment)
-        }
     }
     override fun onDestroyView() {
         super.onDestroyView()

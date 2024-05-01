@@ -22,12 +22,6 @@ override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, saved
 }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.buttonSearch.setOnClickListener {
-            it.findNavController().navigate(R.id.action_homeFragment_to_searchFragment)
-        }
-        binding.buttonFavorites.setOnClickListener {
-            it.findNavController().navigate(R.id.action_homeFragment_to_favoritesFragment)
-        }
     }
     override fun onDestroyView() {
         super.onDestroyView()

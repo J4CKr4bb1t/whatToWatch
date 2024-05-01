@@ -22,6 +22,7 @@ class StreamingFragment : Fragment() {
     lateinit var recyclerView: RecyclerView
     lateinit var recyclerAdapter: StreamingItemAdapter
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val bundle = arguments
@@ -66,12 +67,6 @@ class StreamingFragment : Fragment() {
 
         //we pass that List<U> to the recycleAdapter!
         recyclerAdapter.setSearchListItems(streamVals)
-
-
-
-        binding.returnToSearchFromStreaming.setOnClickListener {
-            it.findNavController().navigate(R.id.action_streamingFragment_to_searchFragment)
-        }
 
         Log.e("Info","Recycle view info passed")
             var currStream = streamerResults //.get(stream_num)
