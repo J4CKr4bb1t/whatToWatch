@@ -18,8 +18,6 @@ class DetailFragment : Fragment() {
     var movie_num = 0
     private var _binding: FragmentDetailBinding? = null
     private val binding get() = _binding!!
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //   recipient = arguments!!.getString("recipient")

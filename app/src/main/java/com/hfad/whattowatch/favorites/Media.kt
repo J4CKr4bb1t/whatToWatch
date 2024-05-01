@@ -5,7 +5,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "media_table")
-data class Media (val title: String){
+data class Media (
 
     //tmdb number
     @PrimaryKey(autoGenerate = false)
@@ -25,4 +25,4 @@ data class Media (val title: String){
 
     @ColumnInfo(name = "media_fav")
     var mediaFavorited: Boolean = false
-}
+)

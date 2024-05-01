@@ -12,8 +12,8 @@ class MediaViewModel (val dao: MediaDao) : ViewModel() {
     //as of now, add Task JUST adds the title. Once that's working, we can add more info
     fun addTask() {
         viewModelScope.launch {
-            val media = Media(newMediaTitle)
-            //media.mediaTitle = newMediaTitle
+            val media = Media()
+            media.mediaTitle = newMediaTitle
             dao.insert(media)
         }
     }
