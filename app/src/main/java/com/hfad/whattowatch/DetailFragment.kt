@@ -60,6 +60,15 @@ class DetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        //forDatabase information
+        val application = requireNotNull(this.activity).application
+        val dao = MediaDatabase.getInstance(application).mediaDao
+        val viewModelFactory = TasksViewModelFactory(dao)
+        val viewModel = ViewModelProvider(
+            this, viewModelFactory).get(MediaViewModel::class.java)
+
+        binding.viewModel = viewModel
+
         binding.whereToWatchButton.setOnClickListener {
             Log.e("stream_Num","passing movie_Num " + movie_num)
 
@@ -75,6 +84,9 @@ class DetailFragment : Fragment() {
 
         val currMovie = results.get(movie_num)
         Log.d("streaming","detail movie streaming" + currMovie.streamingInfo)
+
+        val TMDB = currMovie.tmdbId;
+        viewModel.newMediaTMDB = TMDB
 
         val title = currMovie.title
         binding.tvMediaTitle.text = title

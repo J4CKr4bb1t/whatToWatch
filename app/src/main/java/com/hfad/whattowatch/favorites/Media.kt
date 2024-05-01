@@ -15,7 +15,7 @@ data class Media(
     * YEAR: int
     * GENRE: String
     * DESC: String
-    * STREAMINGINFO: streamingInfo?
+    * STREAMINGINFO: streamingInfo? < not working
     * FAVORITED: Boolean
     * */
 

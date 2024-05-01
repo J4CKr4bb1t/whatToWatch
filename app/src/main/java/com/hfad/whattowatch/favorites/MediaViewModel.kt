@@ -17,7 +17,7 @@ class MediaViewModel (val dao: MediaDao) : ViewModel() {
    * STREAMINGINFO: streamingInfo?
    * FAVORITED: Boolean
    * */
-    var newMediaTMDB = 555555555
+    var newMediaTMDB = 555555554
     var newMediaTitle = "default Title"
     var newMediaType = "default type"
     var newMediaYear = 1999
