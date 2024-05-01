@@ -49,13 +49,11 @@ class FavItemAdapter(val context: Context, var navController: NavController) :
 
         private var pos:Int = 0
 
-        //listener for detail fragment, pass along song info
+        //listener for fav item if clicked
         init {
             itemView.setOnClickListener {
                 Log.v("Favorite", "RecycleView Clicked")
-                //Search to detail fragment navigation
-                //val action = SearchFragmentDirections.actionSearchFragmentToDetailFragment(pos)
-                //navController.navigate(action)
+
             }
         }
 

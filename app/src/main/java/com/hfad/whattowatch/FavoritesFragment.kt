@@ -55,8 +55,6 @@ class FavoritesFragment : Fragment() {
             recyclerAdapter.setSearchListItems(mediaList)
         }
 
-
-
         //return to home
         binding.returnToHome.setOnClickListener {
             it.findNavController().navigate(R.id.action_favoritesFragment_to_homeFragment)
