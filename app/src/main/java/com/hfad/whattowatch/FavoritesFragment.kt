@@ -34,12 +34,6 @@ class FavoritesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //for recyclerview
-        recyclerView = binding.favoritesRecycle
-        recyclerAdapter = FavItemAdapter(requireContext(), Navigation.findNavController(view))
-        recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        recyclerView.adapter = recyclerAdapter
-
         //forDatabase information
         val application = requireNotNull(this.activity).application
         val dao = MediaDatabase.getInstance(application).mediaDao
@@ -48,6 +42,14 @@ class FavoritesFragment : Fragment() {
             this, viewModelFactory).get(MediaViewModel::class.java)
 
         binding.viewModel = viewModel
+
+        //for recyclerview
+        recyclerView = binding.favoritesRecycle
+        recyclerAdapter = FavItemAdapter(requireContext(), Navigation.findNavController(view), viewModel)
+        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        recyclerView.adapter = recyclerAdapter
+
+
 
 
         //GOTTA USE THE OBSERVER TO ACCESS DATABASE SO THAT IT HAS TIME TO LOAD

@@ -80,6 +80,7 @@ class MovieItemAdapter(val context: Context, var navController: NavController) :
                 infoText = type + ", " + year + ", " + genre
             }
             information.text =  infoText
+
         }
     }
 }

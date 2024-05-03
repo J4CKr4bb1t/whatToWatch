@@ -5,7 +5,9 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
+import androidx.lifecycle.ViewModel
 import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
 import com.hfad.whattowatch.databinding.FragmentDetailBinding
@@ -17,8 +19,9 @@ var favorites : List<Media>? = ArrayList<Media>()
 
 
 
-class FavItemAdapter(val context: Context, var navController: NavController) :
+class FavItemAdapter(val context: Context, var navController: NavController, var viewModel: ViewModel) :
     RecyclerView.Adapter<FavItemAdapter.FavItemViewHolder>() {
+
 
     //itemCount used to make sure we display all the data
     //returns 0 if favorites is null (which it might be if database is empty)
@@ -36,7 +39,7 @@ class FavItemAdapter(val context: Context, var navController: NavController) :
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavItemViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_favorite,parent,false)
 
-        return FavItemViewHolder(view, context, navController)
+        return FavItemViewHolder(view, context, navController, viewModel)
     }
 
 
@@ -46,7 +49,7 @@ class FavItemAdapter(val context: Context, var navController: NavController) :
     }
 
     //defines the view
-    class FavItemViewHolder (itemView: View, private val context: Context, var navController: NavController)
+    class FavItemViewHolder (itemView: View, private val context: Context, var navController: NavController, var viewModel: ViewModel)
         : RecyclerView.ViewHolder(itemView) {
 
         private val title: TextView = itemView!!.findViewById(R.id.movieNameFav)
@@ -70,8 +73,6 @@ class FavItemAdapter(val context: Context, var navController: NavController) :
 
         fun bind(position: Int , holder: RecyclerView.ViewHolder){
 
-
-
             pos = position
             val currMovie = favorites?.get(position)
             Log.d("CURR MOVIE", currMovie.toString())
@@ -82,6 +83,10 @@ class FavItemAdapter(val context: Context, var navController: NavController) :
                 title.text = medTitle
 
                 val currTMDB = currMovie.mediaTMDB
+
+
+
+
                 Log.d("ClickedTMBD", "Added Fav $medTitle : $currTMDB")
 
 
