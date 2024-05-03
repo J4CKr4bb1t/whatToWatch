@@ -1,3 +1,14 @@
+<layout>
+    <data>
+        <variable
+            name="recycleTMDB"
+            type = "Long"  />
+
+        <variable
+            name="viewModel"
+            type="com.hfad.whattowatch.favorites.MediaViewModel" />
+    </data>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -25,3 +36,5 @@
         android:textSize="16sp" />
 
 </LinearLayout>
+
+</layout>

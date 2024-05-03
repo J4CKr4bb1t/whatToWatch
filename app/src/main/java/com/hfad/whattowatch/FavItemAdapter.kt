@@ -8,10 +8,14 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
+import com.hfad.whattowatch.databinding.FragmentDetailBinding
 import com.hfad.whattowatch.favorites.Media
 
 
 var favorites : List<Media>? = ArrayList<Media>()
+
+
+
 
 class FavItemAdapter(val context: Context, var navController: NavController) :
     RecyclerView.Adapter<FavItemAdapter.FavItemViewHolder>() {
@@ -31,13 +35,14 @@ class FavItemAdapter(val context: Context, var navController: NavController) :
     //creates view
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavItemViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_favorite,parent,false)
+
         return FavItemViewHolder(view, context, navController)
     }
 
 
     //binds data to the view
     override fun onBindViewHolder(holder: FavItemAdapter.FavItemViewHolder, position: Int) {
-        holder.bind(position)
+        holder.bind(position, holder)
     }
 
     //defines the view
@@ -49,22 +54,38 @@ class FavItemAdapter(val context: Context, var navController: NavController) :
 
         private var pos:Int = 0
 
+
         //listener for fav item if clicked
         init {
             itemView.setOnClickListener {
                 Log.v("Favorite", "RecycleView Clicked")
 
+                val clickedTMDB = favorites?.get(absoluteAdapterPosition)?.mediaTMDB
+                Log.d("Clicked TMDB", clickedTMDB.toString())
+
+                //viewModel.deleteMedia(clickedTMDB)
+
             }
         }
 
-        fun bind(position: Int){
+        fun bind(position: Int , holder: RecyclerView.ViewHolder){
+
+
 
             pos = position
             val currMovie = favorites?.get(position)
             Log.d("CURR MOVIE", currMovie.toString())
 
+
             if (currMovie != null) {
-                title.text = currMovie.mediaTitle
+                val medTitle = currMovie.mediaTitle
+                title.text = medTitle
+
+                val currTMDB = currMovie.mediaTMDB
+                Log.d("ClickedTMBD", "Added Fav $medTitle : $currTMDB")
+
+
+                //HOW DO I SET recycleTMDB to equal currTMDB here?
 
                 //Movie Information
                 val type = currMovie.mediaType

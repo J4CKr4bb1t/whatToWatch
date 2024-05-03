@@ -67,6 +67,7 @@ class DetailFragment : Fragment() {
             this, viewModelFactory).get(MediaViewModel::class.java)
 
         binding.viewModel = viewModel
+        //end for database
 
         binding.whereToWatchButton.setOnClickListener {
             Log.e("stream_Num","passing movie_Num " + movie_num)

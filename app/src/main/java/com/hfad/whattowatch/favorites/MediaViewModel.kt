@@ -46,4 +46,15 @@ class MediaViewModel (val dao: MediaDao) : ViewModel() {
         }
     }
 
+    fun deleteMedia(TMDB: Long)
+    {
+        viewModelScope.launch {
+            Log.d("deleting" , "making dao.insert() call!!")
+            val media = dao.get(TMDB).value
+            if (media != null) {
+                dao.delete(media)
+            }
+        }
+    }
+
 }
