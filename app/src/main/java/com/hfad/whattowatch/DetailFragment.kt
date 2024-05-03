@@ -1,7 +1,7 @@
 package com.hfad.whattowatch
 
 import android.os.Bundle
-import android.util.Log
+//import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -28,7 +28,7 @@ class DetailFragment : Fragment() {
         //   recipient = arguments!!.getString("recipient")
         val bundle = arguments
         if (bundle == null) {
-            Log.e("DetailFragment", "DetailFragment did not receive song_num")
+            //Log.e("DetailFragment", "DetailFragment did not receive song_num")
 
             return
         }
@@ -70,7 +70,7 @@ class DetailFragment : Fragment() {
         //end for database
 
         binding.whereToWatchButton.setOnClickListener {
-            Log.e("stream_Num","passing movie_Num " + movie_num)
+            //Log.e("stream_Num","passing movie_Num " + movie_num)
 
             // Pass movie_num as stream_num
             val action = DetailFragmentDirections
@@ -79,7 +79,7 @@ class DetailFragment : Fragment() {
         }
 
         val currMovie = results.get(movie_num)
-        Log.d("streaming","detail movie streaming" + currMovie.streamingInfo)
+        //Log.d("streaming","detail movie streaming" + currMovie.streamingInfo)
 
         val TMDB = currMovie.tmdbId
 

@@ -1,7 +1,7 @@
 package com.hfad.whattowatch
 
 import android.content.Context
-import android.util.Log
+//import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -29,7 +29,7 @@ class FavItemAdapter(val context: Context, var navController: NavController, var
 
     fun setSearchListItems(favData: List<Media>?)
     {
-        Log.v("Database Checked", "Loaded into recycle")
+        //Log.v("Database Checked", "Loaded into recycle")
         favorites = favData
         notifyDataSetChanged()
 
@@ -61,10 +61,10 @@ class FavItemAdapter(val context: Context, var navController: NavController, var
         //listener for fav item if clicked
         init {
             itemView.setOnClickListener {
-                Log.v("Favorite", "RecycleView Clicked")
+                //Log.v("Favorite", "RecycleView Clicked")
 
                 val clickedTMDB = favorites?.get(absoluteAdapterPosition)?.mediaTMDB
-                Log.d("Clicked TMDB", clickedTMDB.toString())
+                //Log.d("Clicked TMDB", clickedTMDB.toString())
 
                 //viewModel.deleteMedia(clickedTMDB)
 
@@ -75,7 +75,7 @@ class FavItemAdapter(val context: Context, var navController: NavController, var
 
             pos = position
             val currMovie = favorites?.get(position)
-            Log.d("CURR MOVIE", currMovie.toString())
+            //Log.d("CURR MOVIE", currMovie.toString())
 
 
             if (currMovie != null) {
@@ -87,7 +87,7 @@ class FavItemAdapter(val context: Context, var navController: NavController, var
 
 
 
-                Log.d("ClickedTMBD", "Added Fav $medTitle : $currTMDB")
+                //Log.d("ClickedTMBD", "Added Fav $medTitle : $currTMDB")
 
 
                 //HOW DO I SET recycleTMDB to equal currTMDB here?

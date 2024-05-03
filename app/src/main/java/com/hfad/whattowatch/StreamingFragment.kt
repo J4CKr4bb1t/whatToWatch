@@ -1,7 +1,7 @@
 package com.hfad.whattowatch
 
 import android.os.Bundle
-import android.util.Log
+//import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -27,13 +27,13 @@ class StreamingFragment : Fragment() {
         super.onCreate(savedInstanceState)
         val bundle = arguments
         if (bundle == null) {
-            Log.e("StreamingFragment", "StreamingFragment did not receive stream_num")
+//            Log.e("StreamingFragment", "StreamingFragment did not receive stream_num")
             return
         }
 
         //stream num tells us what movie index from results to access
         stream_num = StreamingFragmentArgs.fromBundle(bundle).streamNum
-        Log.e("stream_Num","recieved streamNum " + stream_num)
+//        Log.e("stream_Num","recieved streamNum " + stream_num)
     }
 
     override fun onCreateView(
@@ -48,7 +48,7 @@ class StreamingFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         //Attaching recycleView
-        Log.e("RecycleView","RecycleView was created")
+//        Log.e("RecycleView","RecycleView was created")
         recyclerView = binding.streamingRecycle
         recyclerAdapter = StreamingItemAdapter(requireContext(), Navigation.findNavController(view))
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
@@ -56,19 +56,19 @@ class StreamingFragment : Fragment() {
 
         //we grab that value and grab the List<U> from movie.streaminginfo.us
         val currMovie = results.get(stream_num)
-        Log.e("stream_Num","recieved movie  " + currMovie.toString())
+//        Log.e("stream_Num","recieved movie  " + currMovie.toString())
 
         val currMovieStream = currMovie.streamingInfo
-        Log.e("stream_Num","recieved streamingInfo  " + currMovieStream.toString())
+//        Log.e("stream_Num","recieved streamingInfo  " + currMovieStream.toString())
 
         //making sure we recieve the data
         val streamVals = currMovieStream.us
-        Log.e("stream_Num","recieved streaming U's  " + streamVals.toString())
+//        Log.e("stream_Num","recieved streaming U's  " + streamVals.toString())
 
         //we pass that List<U> to the recycleAdapter!
         recyclerAdapter.setSearchListItems(streamVals)
 
-        Log.e("Info","Recycle view info passed")
+//        Log.e("Info","Recycle view info passed")
             var currStream = streamerResults //.get(stream_num)
             recyclerAdapter.setSearchListItems(currStream)
 

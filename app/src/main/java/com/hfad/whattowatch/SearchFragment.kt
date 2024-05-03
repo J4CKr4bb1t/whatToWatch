@@ -1,7 +1,7 @@
 package com.hfad.whattowatch
 
 import android.os.Bundle
-import android.util.Log
+//import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -33,7 +33,7 @@ class SearchFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        Log.d("searchFragment", "Fragment Created")
+//        Log.d("searchFragment", "Fragment Created")
         super.onViewCreated(view, savedInstanceState)
 
         var search = binding.searchField
@@ -45,7 +45,7 @@ class SearchFragment : Fragment() {
         recyclerView.adapter = recyclerAdapter
 
         binding.searchButton.setOnClickListener {
-            Log.v("button", "Searched for " + search.text.toString())
+//            Log.v("button", "Searched for " + search.text.toString())
             val apiInterface = APIInterface.create().getSearch(search.text.toString(), "us")
             if (apiInterface != null) {
                 apiInterface
@@ -54,18 +54,18 @@ class SearchFragment : Fragment() {
                             call: Call<SearchResult?>,
                             response: Response<SearchResult?>
                         ){
-                            Log.v("API Response", "I just responded")
+//                            Log.v("API Response", "I just responded")
 
                             if (response?.body() != null) {
                                 var movies = (response.body()!! as SearchResult).result;
-                                Log.v("API Response", "movies: " + movies)
+//                                Log.v("API Response", "movies: " + movies)
                                 recyclerAdapter.setSearchListItems(movies)
                             }
 
                         }
                         override fun onFailure(call: Call<SearchResult?>, t: Throwable) {
                             if (t != null) {
-                                t.message?.let { Log.d("onFailure", it) }
+//                                t.message?.let { Log.d("onFailure", it) }
 
                             }
                         }

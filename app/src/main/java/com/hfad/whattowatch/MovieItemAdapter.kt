@@ -1,7 +1,7 @@
 package com.hfad.whattowatch
 
 import android.content.Context
-import android.util.Log
+//import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,10 +22,10 @@ class MovieItemAdapter(val context: Context, var navController: NavController) :
 
     fun setSearchListItems(searchData: List<Result>)
     {
-        Log.v("SearchListItems","recieved: " + searchData)
+//        Log.v("SearchListItems","recieved: " + searchData)
         results = searchData as ArrayList<Result>
         notifyDataSetChanged()
-        Log.v("SearchListItems","list: " + Result)
+//        Log.v("SearchListItems","list: " + Result)
 
     }
 
@@ -53,7 +53,7 @@ class MovieItemAdapter(val context: Context, var navController: NavController) :
         //listener for detail fragment, pass along song info
         init {
             itemView.setOnClickListener {
-                Log.v("Navigating", "RecycleView Clicked")
+//                Log.v("Navigating", "RecycleView Clicked")
                 //Search to detail fragment navigation
                 val action = SearchFragmentDirections.actionSearchFragmentToDetailFragment(pos)
                 navController.navigate(action)

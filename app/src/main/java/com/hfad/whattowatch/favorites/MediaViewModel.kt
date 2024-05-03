@@ -1,7 +1,7 @@
 package com.hfad.whattowatch.favorites
 
-import android.util.Log
-import android.widget.Toast
+//import android.util.Log
+//import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.hfad.whattowatch.MediaDao
@@ -40,7 +40,7 @@ class MediaViewModel (val dao: MediaDao) : ViewModel() {
             //media.mediaStreaming = newMediaStreaming
             media.mediaFavorited = newMediaFavorited
 
-            Log.d("INSERTING" , "making dao.insert() call!!")
+            //Log.d("INSERTING" , "making dao.insert() call!!")
             dao.insert(media)
 
         }
@@ -49,7 +49,7 @@ class MediaViewModel (val dao: MediaDao) : ViewModel() {
     fun deleteMedia(TMDB: Long)
     {
         viewModelScope.launch {
-            Log.d("deleting" , "making dao.insert() call!!")
+            //Log.d("deleting" , "making dao.insert() call!!")
             val media = dao.get(TMDB).value
             if (media != null) {
                 dao.delete(media)

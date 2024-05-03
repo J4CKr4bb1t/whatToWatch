@@ -3,7 +3,7 @@ package com.hfad.whattowatch
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
-import android.util.Log
+//import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -26,12 +26,12 @@ class StreamingItemAdapter(val context: Context, var navController: NavControlle
         if (searchData != null) {
             streamerResults = searchData as ArrayList<U>
             notifyDataSetChanged()
-            Log.v("SearchListItems", "list updated: $streamerResults")
+//            Log.v("SearchListItems", "list updated: $streamerResults")
         } else {
             // Handle null searchData for no streaming information
             streamerResults.clear()
             notifyDataSetChanged()
-            Log.v("SearchListItems", "searchData is null")
+//            Log.v("SearchListItems", "searchData is null")
 
             // Show toast that there is no streaming information
             Toast.makeText(context, "No streaming information available", Toast.LENGTH_LONG).show();
