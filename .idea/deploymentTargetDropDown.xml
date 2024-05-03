@@ -2,10 +2,19 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
-      <entry key="MainActivity">
+      <entry key="Test">
         <State />
       </entry>
       <entry key="app">
+        <State />
+      </entry>
+      <entry key="testFavoriteButtonClick()">
+        <State />
+      </entry>
+      <entry key="testNavigationToSearchFragment()">
+        <State />
+      </entry>
+      <entry key="testSearchFunctionality()">
         <State />
       </entry>
     </value>
